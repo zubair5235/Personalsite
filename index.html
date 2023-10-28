@@ -342,6 +342,31 @@
             margin-top: 80px;
         }
 
+        #loadingPage{
+            position: fixed;
+            top: 0px;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(2,0,36,.9);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            visibility: visible;
+        }
+
+        #loadingCircle{
+            width: 50px;
+            height: 50px;
+            border: 5px dotted rgba(255,255,255,1);
+            border-radius: 50%;
+            animation-name: rotate;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        
         @media (max-width: 500px) {
             body
             {
@@ -657,6 +682,11 @@
     </style>
 </head>
 <body>
+    <div id="loadingPage">
+        <div id="loadingCircle"></div>
+        <br>
+        <p>Loading...</p>
+    </div>
     <header>
         <div class="navbar">
             <div class="logo">
@@ -733,6 +763,8 @@
     </main>
     <footer></footer>
     <script>
+        var LoadingPage = document.getElementById("loadingPage");
+        
         function openDD()
         {
             document.getElementById('Projects').style.display = "flex";
@@ -755,6 +787,10 @@
             document.getElementById('close-btn').style.display="none";
             document.getElementById('menu-btn').style.display="flex";
         }
+
+        window.addEventListener('load',()=>{
+            LoadingPage.style.visibility = "hidden";
+        });
 
     </script>
 </body>
